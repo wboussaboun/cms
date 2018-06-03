@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/a/{as}/{asd}', function ($as, $asd) {
+    return 'tus datos: '.$as.' '.$asd;
+});
+
+Route::get('/post/{a}', 'PostController@index');
