@@ -11,12 +11,31 @@
 |
 */
 
+use App\User;
+use App\Adress;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/a/{as}/{asd}', function ($as, $asd) {
-    return 'tus datos: '.$as.' '.$asd;
+Route::get('/walid', function () {
+    $walid = User::all()->where('name', '=', 'walid');
+    // $walid = $users->where('name', '=', 'walid');
+    return $walid;
 });
+//
+// Route::get('/a/{as}/{asd}', function ($as, $asd) {
+//     return 'tus datos: '.$as.' '.$asd;
+// });
+//
+// Route::get('/post/{a}', 'PostController@index');
+//
+// Route::get('/insert', function () {
+//     $user = User::find(1);
+//     $adress = new Adress(['name'=>'calle oropendola']);
+//     $user->adress()->save($adress);
+//
+// });
 
-Route::get('/post/{a}', 'PostController@index');
+
+Route::resource('/posts','PostController');
